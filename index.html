@@ -75,6 +75,25 @@
         }
       }
     </style>
+    <script>
+      (function () {
+        try {
+          var path = (location.pathname || "").replace(/\/+$/, "");
+          var isRoot = path === "" || path === "/";
+          var isIndex = path.toLowerCase() === "/index.html";
+          if (!isRoot && !isIndex) {
+            var dest =
+              location.origin +
+              "/index.html" +
+              (location.search || "") +
+              (location.hash || "");
+            location.replace(dest);
+          }
+        } catch (e) {
+          // no-op
+        }
+      })();
+    </script>
   </head>
   <body>
     <div class="container">
