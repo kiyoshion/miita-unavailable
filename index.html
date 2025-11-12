@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="miitaサービスは現在一時停止中です。再開時期は未定です。"
+    />
+    <meta name="theme-color" content="#667eea" />
     <title>miita - サービス一時停止中</title>
     <style>
       * {
@@ -21,6 +26,15 @@
         justify-content: center;
         padding: 20px;
         color: #333;
+        animation: fadeIn 0.6s ease-in;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
       .container {
         background: white;
@@ -30,6 +44,18 @@
         width: 100%;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         text-align: center;
+        animation: slideUp 0.8s ease-out;
+        transform-origin: center;
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
       h1 {
         font-size: 48px;
@@ -60,6 +86,33 @@
         font-size: 64px;
         margin-bottom: 20px;
       }
+      .status-icon {
+        font-size: 48px;
+        margin-bottom: 20px;
+        display: inline-block;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+      .message {
+        transition: transform 0.2s ease;
+      }
+      .message:hover {
+        transform: translateY(-2px);
+      }
+      .divider {
+        transition: opacity 0.3s ease;
+      }
+      .container:hover .divider {
+        opacity: 0.8;
+      }
       @media (max-width: 600px) {
         .container {
           padding: 40px 30px;
@@ -72,6 +125,18 @@
         }
         .message p {
           font-size: 14px;
+        }
+        .status-icon {
+          font-size: 36px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
         }
       }
     </style>
@@ -163,6 +228,7 @@
       </h1>
 
       <div class="message">
+        <div class="status-icon" role="img" aria-label="一時停止中">⏸️</div>
         <h2>サービス一時停止中</h2>
         <p>
           miitaは現在、サービスを一時停止しております。<br />再開時期については未定です。<br />ご不便をおかけして申し訳ございません。
@@ -172,6 +238,13 @@
       <div class="divider"></div>
 
       <div class="message">
+        <div
+          class="status-icon"
+          role="img"
+          aria-label="Temporarily Unavailable"
+        >
+          ⏸️
+        </div>
         <h2>Service Temporarily Unavailable</h2>
         <p>
           miita is currently temporarily unavailable.<br />The resumption date
